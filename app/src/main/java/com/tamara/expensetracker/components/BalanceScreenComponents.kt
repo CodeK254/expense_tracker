@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
@@ -125,8 +124,7 @@ fun AmountCard(
                 shape = CircleShape.copy(
                     CornerSize(16.dp)
                 ),
-            )
-            .fillMaxHeight(),
+            ),
         shape = CircleShape.copy(
             CornerSize(16.dp)
         ),
@@ -142,7 +140,7 @@ fun AmountCard(
                     vertical = 12.dp,
                     horizontal = 24.dp
                 )
-                .fillMaxHeight()
+//                .fillMaxHeight()
         ) {
             Row(
 //                modifier = Modifier.fillMaxWidth(),
@@ -207,7 +205,7 @@ fun ShowAmountContainers(
     transactions: List<Transaction>,
 ){
     Row(
-        modifier = modifier.fillMaxHeight(),
+        modifier = modifier,
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ){
@@ -230,7 +228,6 @@ fun ShowAmountContainers(
             icon = Icons.Filled.ArrowOutward,
             modifier = Modifier
                 .weight(1f)
-                .fillMaxHeight(),
         )
         Spacer(modifier = Modifier.width(20.dp))
         AmountCard(
@@ -241,7 +238,6 @@ fun ShowAmountContainers(
             icon = Icons.Filled.ArrowOutward,
             modifier = Modifier
                 .weight(1f)
-                .fillMaxHeight(),
         )
     }
 }
@@ -312,10 +308,12 @@ fun ListRecentTransactions(
             )
         }
         Spacer(modifier = Modifier.height(20.dp))
-        Column {
+        Column (
+            modifier = Modifier.verticalScroll(rememberScrollState())
+        ) {
             val displayTransactions: List<Transaction>  = if(transactions.size > 5 ){
                 if(!homeScreenViewModel.viewMore()) {
-                    transactions.slice(0..4)
+                    transactions.slice(0..3)
                 } else {
                     transactions
                 }

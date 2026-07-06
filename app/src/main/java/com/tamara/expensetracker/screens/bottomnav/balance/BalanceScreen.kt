@@ -78,7 +78,7 @@ fun BalanceScreen(homeScreenViewModel: HomeScreenViewModel = viewModel()) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
+//                    .verticalScroll(rememberScrollState())
             ) {
                 homeScreenViewModel.getCategoryValues(transactions, categories)
                 AnimatedVisibility(
@@ -89,8 +89,7 @@ fun BalanceScreen(homeScreenViewModel: HomeScreenViewModel = viewModel()) {
                             modifier = Modifier
                                 .padding(
                                     top = 24.dp
-                                )
-                                .fillMaxHeight(),
+                                ),
                             transactions = transactions
                         )
                         ShowSpendingSlider(
