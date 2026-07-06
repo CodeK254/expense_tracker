@@ -1,7 +1,10 @@
 package com.tamara.expensetracker.components
 
+import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +24,7 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowOutward
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -112,15 +116,17 @@ fun AmountCard(
     modifier: Modifier = Modifier,
 ){
     Card(
-        modifier = modifier.border(
-            width = 2.dp,
-            color = color.copy(
-                alpha = .35f
-            ),
-            shape = CircleShape.copy(
-                CornerSize(16.dp)
-            ),
-        ).fillMaxHeight(),
+        modifier = modifier
+            .border(
+                width = 2.dp,
+                color = color.copy(
+                    alpha = .35f
+                ),
+                shape = CircleShape.copy(
+                    CornerSize(16.dp)
+                ),
+            )
+            .fillMaxHeight(),
         shape = CircleShape.copy(
             CornerSize(16.dp)
         ),
@@ -131,27 +137,33 @@ fun AmountCard(
         )
     ) {
         Column(
-            modifier = Modifier.padding(
-                vertical = 12.dp,
-                horizontal = 24.dp
-            ).fillMaxHeight()
+            modifier = Modifier
+                .padding(
+                    vertical = 12.dp,
+                    horizontal = 24.dp
+                )
+                .fillMaxHeight()
         ) {
             Row(
 //                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Card(
-                    modifier = Modifier.size(25.dp).background(
-                        color = Color.Transparent,
-                    ),
+                    modifier = Modifier
+                        .size(25.dp)
+                        .background(
+                            color = Color.Transparent,
+                        ),
                     shape = CircleShape,
                 ) {
                     Box(
-                        modifier = Modifier.fillMaxSize().background(
-                            color = color.copy(
-                                alpha = .15f
-                            )
-                        ),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                color = color.copy(
+                                    alpha = .15f
+                                )
+                            ),
                         contentAlignment = Alignment.Center,
                     ){
                         Icon(
@@ -216,7 +228,9 @@ fun ShowAmountContainers(
             amount = incomeAmount,
             color = Color.Green,
             icon = Icons.Filled.ArrowOutward,
-            modifier = Modifier.weight(1f).fillMaxHeight(),
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight(),
         )
         Spacer(modifier = Modifier.width(20.dp))
         AmountCard(
@@ -225,7 +239,9 @@ fun ShowAmountContainers(
             amount = expenseAmount,
             color = Color.Red,
             icon = Icons.Filled.ArrowOutward,
-            modifier = Modifier.weight(1f).fillMaxHeight(),
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight(),
         )
     }
 }
@@ -249,9 +265,11 @@ fun ShowSpendingSlider(
             value = usedAmount,
             steps = 31,
             onValueChange = {},
-            modifier = Modifier.padding(top = 16.dp).height(
-                5.dp
-            )
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .height(
+                    5.dp
+                )
         )
     }
 }
@@ -259,13 +277,17 @@ fun ShowSpendingSlider(
 @Composable
 fun ListRecentTransactions(
     modifier: Modifier = Modifier,
-    transactionViewModel: HomeScreenViewModel = viewModel(),
+    viewMore: Boolean = false,
+    homeScreenViewModel: HomeScreenViewModel = viewModel(),
+    onViewMore: () -> Unit,
 ){
-    val transactions = transactionViewModel.transactionList.collectAsState().value
+    val transactions = homeScreenViewModel.transactionList.collectAsState().value
     Column(
-        modifier = modifier.fillMaxHeight().background(
-            color = Color.Black
-        ),
+        modifier = modifier
+            .fillMaxHeight()
+            .background(
+                color = Color.Black
+            ),
         verticalArrangement = Arrangement.Top,
     ) {
         Row(
@@ -280,21 +302,43 @@ fun ListRecentTransactions(
                 color = Color.White,
             )
             Text(
-                text = "See All",
+                text = if(!viewMore) "See All" else "See Less",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Yellow,
+                modifier = Modifier.clickable{
+                    onViewMore.invoke()
+                }
             )
         }
         Spacer(modifier = Modifier.height(20.dp))
         Column {
-            transactions.forEach {
+            val displayTransactions: List<Transaction>  = if(transactions.size > 5 ){
+                if(!homeScreenViewModel.viewMore()) {
+                    transactions.slice(0..4)
+                } else {
+                    transactions
+                }
+            } else {
+                transactions
+            }
+            displayTransactions.forEach { it ->
+                Log.d("EXPENSE-APP", "${it.title} - ${it.id} against ${homeScreenViewModel.getExpandedTile()}")
                 TransactionCard(
                     modifier = Modifier.padding(
-                        top = 10.dp
+                        vertical = 4.dp
                     ),
-                    transaction = it
+                    transaction = it,
+                    isExpanded = homeScreenViewModel.getExpandedTile() == it.id,
+                    onClick = {
+                        if(homeScreenViewModel.getExpandedTile() == it.id){
+                            homeScreenViewModel.clearExpandedTile()
+                            return@TransactionCard
+                        }
+                        homeScreenViewModel.expandTile(transaction = it)
+                    }
                 )
+                Spacer(modifier = Modifier.height(4.dp))
             }
         }
     }
@@ -304,85 +348,141 @@ fun ListRecentTransactions(
 fun TransactionCard(
     modifier: Modifier = Modifier,
     transaction: Transaction,
-    homeScreenViewModel: HomeScreenViewModel = viewModel()
+    isExpanded: Boolean = false,
+    homeScreenViewModel: HomeScreenViewModel = viewModel(),
+    onClick: (Transaction) -> Unit,
 ) {
     val category = homeScreenViewModel.categoryList
         .collectAsState().value.filter { category ->
             category.id == transaction.categoryId
         }[0]
-    Row(
-        modifier = modifier.fillMaxWidth().background(
-            color = Color.White.copy(
-                alpha = .1f
-            ),
-            shape = CircleShape.copy(
-                CornerSize(12.dp)
-            )
-        ).clip(
-            shape = CircleShape.copy(
-                CornerSize(12.dp)
-            )
-        ).padding(horizontal = 12.dp),
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Card(
-            modifier = Modifier.padding(
-                top = 12.dp, end = 12.dp, bottom = 12.dp
-            ),
-            shape = CircleShape.copy(
-                CornerSize(8.dp)
-            ),
-            colors = CardDefaults.cardColors().copy(
-                Color(category.color).copy(
-                    alpha = .175f
+    Column(
+        modifier = Modifier
+            .background(
+                color = Color.White.copy(
+                    alpha = .1f
+                ),
+                shape = CircleShape.copy(
+                    CornerSize(12.dp)
                 )
-            ),
+            )
+            .clip(
+                shape = CircleShape.copy(
+                    CornerSize(12.dp)
+                )
+            )
+            .padding(horizontal = 12.dp)
+            .clickable{
+            onClick.invoke(transaction)
+        }
+    ) {
+        Row(
+            modifier = modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(
-                contentAlignment = Alignment.Center,
+            Card(
+                modifier = Modifier.padding(
+                    top = 12.dp, end = 12.dp, bottom = 12.dp
+                ),
+                shape = CircleShape.copy(
+                    CornerSize(8.dp)
+                ),
+                colors = CardDefaults.cardColors().copy(
+                    Color(category.color).copy(
+                        alpha = .175f
+                    )
+                ),
             ) {
+                Box(
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = TransactionIconRegistry.getVector(
+                            category.icon,
+                        ),
+                        contentDescription = "Transaction Icon",
+                        modifier = Modifier
+                            .size(40.dp)
+                            .padding(
+                                all = 8.dp
+                            ),
+                        tint = Color(category.color)
+                    )
+                }
+            }
+
+            Column(
+                modifier = Modifier
+                    .padding(start = 12.dp)
+                    .weight(
+                        1f
+                    ),
+                horizontalAlignment = Alignment.Start,
+            ) {
+                Text(
+                    text = transaction.title,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    maxLines = 1,
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = DateTimeFormatter.ofPattern("EEE, d MMM y")
+                        .format(transaction.createdAt),
+                    fontSize = 12.sp,
+                    color = Color.White.copy(
+                        alpha = .75f
+                    ),
+                )
+            }
+
+            Text(
+                text = "KES " + "%,.2f".format(transaction.amount),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+            )
+        }
+        AnimatedVisibility(
+            visible = isExpanded,
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(color = Color.White.copy(
+                        .05f
+                    ))
+                    .height(
+                        if (isExpanded) 40.dp else 0.dp
+                    ),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = transaction.description,
+                    fontSize = 14.sp,
+                    color = Color.White.copy(
+                        alpha = .75f
+                    ),
+                    maxLines = 2,
+                    modifier = Modifier.weight(1f).padding(
+                        horizontal = 12.dp
+                    )
+                )
                 Icon(
-                    imageVector = TransactionIconRegistry.getVector(
-                        category.icon,
-                    ),
-                    contentDescription = "Transaction Icon",
-                    modifier = Modifier.size(40.dp).padding(
-                        all = 8.dp
-                    ),
-                    tint = Color(category.color)
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = "Edit Icon",
+                    modifier = Modifier.padding(end = 12.dp).size(
+                        20.dp
+                    ).clickable{
+
+                    }
                 )
             }
         }
-
-        Column(
-            modifier = Modifier.padding(start = 12.dp).weight(
-                1f
-            ),
-            horizontalAlignment = Alignment.Start,
-        ) {
-            Text(
-                text = transaction.title,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                maxLines = 1,
-            )
-            Spacer(modifier = Modifier.height(2.dp))
-            Text(
-                text = DateTimeFormatter.ofPattern("EEE, d MMM y").format(transaction.createdAt),
-                fontSize = 12.sp,
-                color = Color.White.copy(
-                    alpha = .75f
-                ),
-            )
-        }
-
-        Text(
-            text = "KES " + "%,.2f".format(transaction.amount),
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-        )
+        Spacer(modifier = Modifier.height(10.dp))
     }
 }

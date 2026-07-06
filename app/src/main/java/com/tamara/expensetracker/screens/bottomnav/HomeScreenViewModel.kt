@@ -2,6 +2,7 @@ package com.tamara.expensetracker.screens.bottomnav
 
 import android.util.Log
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tamara.expensetracker.data.category.CategoryDataSource
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
+import java.util.UUID
 import javax.inject.Inject
 
 enum class Param {
@@ -27,15 +29,24 @@ class HomeScreenViewModel @Inject constructor(
     private val transactionRepository: TransactionRepository
 ): ViewModel() {
     private val _categoryList = MutableStateFlow<List<Category>>(emptyList())
+    private val _expandedTile = mutableStateOf(UUID.randomUUID())
+    private val _viewMore = mutableStateOf(false)
+    fun viewMore(): Boolean { return _viewMore.value }
     val categoryList = _categoryList.asStateFlow()
+
+    fun getExpandedTile(): UUID { return _expandedTile.value }
 
     private val _transactionList = MutableStateFlow<List<Transaction>>(emptyList())
     val transactionList = _transactionList.asStateFlow()
 
+    fun toggleViewMore(value: Boolean) {
+        _viewMore.value = value
+    }
+
     fun getAvailableBalance(param: Param, transactions: List<Transaction>): Float {
-        var availableBalance: Float = 0f
-        var totalIncome: Float = 0f
-        var totalExpense: Float = 0f
+        var availableBalance = 0f
+        var totalIncome = 0f
+        var totalExpense = 0f
         transactions.forEach { transaction ->
             if(transaction.type.lowercase() == "income"){
                 availableBalance += transaction.amount
@@ -78,7 +89,6 @@ class HomeScreenViewModel @Inject constructor(
                 if(categories.isEmpty()){
                     Log.d("EXPENSES-APP", "Empty Category List")
                 } else {
-                    Log.d("EXPENSES-APP", categories.toString())
                     _categoryList.value = categories
                 }
                 
@@ -113,10 +123,22 @@ class HomeScreenViewModel @Inject constructor(
         onComplete.invoke()
     }
 
-    private val selectedState = mutableIntStateOf(value = 0)
+    fun expandTile(transaction: Transaction){
+        Log.d("EXPENSE-APP", "expandTile: ${transaction.id}")
+        _expandedTile.value = transaction.id
+    }
+
+    fun clearExpandedTile(){
+        _expandedTile.value = UUID.randomUUID()
+    }
+
+    private val selectedState = mutableIntStateOf(value = 1)
 
     fun toggleSelection(value: Int) {
         selectedState.intValue = value
+        Log.d("EXPENSE-APP", "expandTile: $_expandedTile")
+        clearExpandedTile()
+        toggleViewMore(false)
     }
 
     fun selectedIndex(): Int {
@@ -139,9 +161,6 @@ class HomeScreenViewModel @Inject constructor(
                 category.value += catTran.amount
             }
             categoryModels.add(category)
-        }
-        categoryModels.forEach {
-            Log.d("EXPENSE-APP", "category item: ${it.label}")
         }
 
         return categoryModels.filter {

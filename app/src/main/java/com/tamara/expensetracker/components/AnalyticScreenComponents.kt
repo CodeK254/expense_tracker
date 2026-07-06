@@ -1,6 +1,5 @@
 package com.tamara.expensetracker.components
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,7 +18,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Slider
-import androidx.compose.material3.SliderColors
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -284,7 +282,7 @@ fun CategoryBreakdown(
             textDecoration = TextDecoration.Underline
         )
         Spacer(modifier = Modifier.height(12.dp))
-        Column() {
+        Column {
             categories.forEach {
                 CategoryRow(
                     label = it.label,
@@ -303,7 +301,6 @@ fun CategoryRow(
     value: Float,
     color: Color,
 ) {
-    Log.d("EXPENSE-APP", "CategoryRow: $label - Value: $value")
     Row(
         modifier = Modifier
             .fillMaxWidth()

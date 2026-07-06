@@ -1,6 +1,8 @@
 package com.tamara.expensetracker.screens.bottomnav.balance
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -79,25 +81,38 @@ fun BalanceScreen(homeScreenViewModel: HomeScreenViewModel = viewModel()) {
                     .verticalScroll(rememberScrollState())
             ) {
                 homeScreenViewModel.getCategoryValues(transactions, categories)
-                ShowAmountContainers(
-                    modifier = Modifier.padding(
-                        top = 24.dp
-                    ).fillMaxHeight(),
-                    transactions = transactions
-                )
-                ShowSpendingSlider(
-                    modifier = Modifier.padding(
-                        top = 20.dp
-                    ),
-                    usedAmount = homeScreenViewModel.getSpentPercentage(
-                        transactions,
-                    ) / 100
-                )
+                AnimatedVisibility(
+                    visible = !homeScreenViewModel.viewMore()
+                ) {
+                    Column {
+                        ShowAmountContainers(
+                            modifier = Modifier
+                                .padding(
+                                    top = 24.dp
+                                )
+                                .fillMaxHeight(),
+                            transactions = transactions
+                        )
+                        ShowSpendingSlider(
+                            modifier = Modifier.padding(
+                                top = 20.dp
+                            ),
+                            usedAmount = homeScreenViewModel.getSpentPercentage(
+                                transactions,
+                            ) / 100
+                        )
+                    }
+                }
                 ListRecentTransactions(
                     modifier = Modifier.padding(
                         top = 20.dp
+                    ),
+                    viewMore = homeScreenViewModel.viewMore()
+                ){
+                    homeScreenViewModel.toggleViewMore(
+                        !homeScreenViewModel.viewMore()
                     )
-                )
+                }
             }
         }
     }
