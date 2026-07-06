@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="app_version">v.1.0.0</string>
+</resources>
