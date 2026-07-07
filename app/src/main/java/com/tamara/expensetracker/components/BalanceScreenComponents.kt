@@ -1,6 +1,5 @@
 package com.tamara.expensetracker.components
 
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -24,7 +23,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowOutward
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -38,7 +36,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -274,10 +271,10 @@ fun ShowSpendingSlider(
 fun ListRecentTransactions(
     modifier: Modifier = Modifier,
     viewMore: Boolean = false,
+    transactions: List<Transaction>,
     homeScreenViewModel: HomeScreenViewModel = viewModel(),
     onViewMore: () -> Unit,
 ){
-    val transactions = homeScreenViewModel.transactionList.collectAsState().value
     Column(
         modifier = modifier
             .fillMaxHeight()
@@ -286,6 +283,19 @@ fun ListRecentTransactions(
             ),
         verticalArrangement = Arrangement.Top,
     ) {
+        if(viewMore){
+            InputTextField(
+                modifier = Modifier.padding(
+                    bottom = 20.dp
+                ),
+                value = homeScreenViewModel.inputValue(),
+                label = "Search",
+                hint = "Search here...",
+                maxLines = 3,
+            ){
+                homeScreenViewModel.onInputChanges(it)
+            }
+        }
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -311,7 +321,7 @@ fun ListRecentTransactions(
         Column (
             modifier = Modifier.verticalScroll(rememberScrollState())
         ) {
-            val displayTransactions: List<Transaction>  = if(transactions.size > 5 ){
+            var displayTransactions: List<Transaction>  = if(transactions.size > 5 ){
                 if(!homeScreenViewModel.viewMore()) {
                     transactions.slice(0..3)
                 } else {
@@ -320,23 +330,39 @@ fun ListRecentTransactions(
             } else {
                 transactions
             }
-            displayTransactions.forEach { it ->
-                Log.d("EXPENSE-APP", "${it.title} - ${it.id} against ${homeScreenViewModel.getExpandedTile()}")
-                TransactionCard(
-                    modifier = Modifier.padding(
-                        vertical = 4.dp
-                    ),
-                    transaction = it,
-                    isExpanded = homeScreenViewModel.getExpandedTile() == it.id,
-                    onClick = {
-                        if(homeScreenViewModel.getExpandedTile() == it.id){
-                            homeScreenViewModel.clearExpandedTile()
-                            return@TransactionCard
-                        }
-                        homeScreenViewModel.expandTile(transaction = it)
-                    }
+            displayTransactions = displayTransactions.sortedByDescending { it.createdAt }
+
+            val groupedByMonth = displayTransactions.groupBy {
+                it.createdAt.format(DateTimeFormatter.ofPattern("MMMM, yyyy"))
+            }
+
+            groupedByMonth.forEach { (label, transactions) ->
+                Text(
+                    text = label,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(vertical = 12.dp, horizontal = 4.dp)
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                transactions.forEach { transaction ->
+                    homeScreenViewModel.getWeekCount(transaction)
+                    TransactionCard(
+                        modifier = Modifier.padding(
+                            vertical = 4.dp
+                        ),
+                        transaction = transaction,
+                        isExpanded = homeScreenViewModel.getExpandedTile() == transaction.id,
+                        onClick = {
+                            if(homeScreenViewModel.getExpandedTile() == it.id){
+                                homeScreenViewModel.clearExpandedTile()
+                                return@TransactionCard
+                            }
+                            homeScreenViewModel.expandTile(transaction = it)
+                        }
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                }
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }
@@ -350,10 +376,15 @@ fun TransactionCard(
     homeScreenViewModel: HomeScreenViewModel = viewModel(),
     onClick: (Transaction) -> Unit,
 ) {
-    val category = homeScreenViewModel.categoryList
+    val categories = homeScreenViewModel.categoryList
         .collectAsState().value.filter { category ->
             category.id == transaction.categoryId
-        }[0]
+        }
+    val category: Category = if (categories.isNotEmpty()){
+        categories.first()
+    } else {
+        Category.default()
+    }
     Column(
         modifier = Modifier
             .background(
@@ -370,9 +401,9 @@ fun TransactionCard(
                 )
             )
             .padding(horizontal = 12.dp)
-            .clickable{
-            onClick.invoke(transaction)
-        }
+            .clickable {
+                onClick.invoke(transaction)
+            }
     ) {
         Row(
             modifier = modifier
@@ -450,9 +481,11 @@ fun TransactionCard(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(color = Color.White.copy(
-                        .05f
-                    ))
+                    .background(
+                        color = Color.White.copy(
+                            .05f
+                        )
+                    )
                     .height(
                         if (isExpanded) 40.dp else 0.dp
                     ),
@@ -466,18 +499,23 @@ fun TransactionCard(
                         alpha = .75f
                     ),
                     maxLines = 2,
-                    modifier = Modifier.weight(1f).padding(
-                        horizontal = 12.dp
-                    )
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(
+                            horizontal = 12.dp
+                        )
                 )
                 Icon(
                     imageVector = Icons.Default.Edit,
                     contentDescription = "Edit Icon",
-                    modifier = Modifier.padding(end = 12.dp).size(
-                        20.dp
-                    ).clickable{
+                    modifier = Modifier
+                        .padding(end = 12.dp)
+                        .size(
+                            20.dp
+                        )
+                        .clickable {
 
-                    }
+                        }
                 )
             }
         }

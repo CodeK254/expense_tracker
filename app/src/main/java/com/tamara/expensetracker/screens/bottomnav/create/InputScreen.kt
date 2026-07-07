@@ -1,12 +1,24 @@
 package com.tamara.expensetracker.screens.bottomnav.create
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -26,8 +38,12 @@ import com.tamara.expensetracker.components.InputTextField
 import com.tamara.expensetracker.components.SaveInputButton
 import com.tamara.expensetracker.models.transaction.Transaction
 import com.tamara.expensetracker.screens.bottomnav.HomeScreenViewModel
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
-@Preview(showBackground = true, backgroundColor = 0)
+//@Preview(showBackground = true, backgroundColor = 0)
 @Composable
 fun InputScreen(
     inputViewModel: InputScreenViewModel = hiltViewModel(),
@@ -65,14 +81,22 @@ fun InputScreen(
             ){
                 inputViewModel.toggleTab(it)
             }
-            AmountInputContainer(
-                modifier = Modifier.padding(
-                    top = 20.dp
-                ),
-                isIncome = inputViewModel.selectedTab() == 0,
-                amount = if (inputViewModel.getAmount() == "") "0.00" else inputViewModel.getAmount(),
-            ){
-                inputViewModel.setShowDialog(true)
+            Column {
+                AmountInputContainer(
+                    modifier = Modifier.padding(
+                        top = 20.dp
+                    ),
+                    isIncome = inputViewModel.selectedTab() == 0,
+                    amount = if (inputViewModel.getAmount() == "") "0.00" else inputViewModel.getAmount(),
+                ){
+                    inputViewModel.setShowDialog(true)
+                }
+                TransactionDatePicker(
+                    onDateSelected = {
+
+                    },
+                    inputViewModel = inputViewModel
+                )
             }
             DialogWithTextField(
                 value = inputViewModel.getAmount(),
@@ -125,10 +149,74 @@ fun InputScreen(
                     title = inputViewModel.getTitle(),
                     description = inputViewModel.getDescription(),
                     amount = inputViewModel.getAmount().toFloat(),
+                    createdAt = Instant.ofEpochMilli(inputViewModel.datePickerState.selectedDateMillis as Long)
+                        .atZone(ZoneId.systemDefault()) // Or ZoneId.of("UTC") depending on your needs
+                        .toLocalDate()
                 )){
                     inputViewModel.clearAllFields()
                     homeScreenViewModel.toggleSelection(1)
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun TransactionDatePicker(
+    onDateSelected: (LocalDate) -> Unit,
+    inputViewModel: InputScreenViewModel,
+) {
+    Column(
+        modifier = Modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Trigger Button
+        OutlinedButton(
+            onClick = { inputViewModel.toggleShowPicker(true) },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Icon(imageVector = Icons.Default.DateRange, contentDescription = "Calendar")
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = inputViewModel.selectedDateText())
+        }
+
+        // 4. Show the Dialog overlay when state is true
+        if (inputViewModel.showDatePicker()) {
+            DatePickerDialog(
+                onDismissRequest = { inputViewModel.toggleShowPicker(false) },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            // Extract milliseconds from state
+                            val selectedMillis =
+                                inputViewModel.datePickerState.selectedDateMillis
+                            if (selectedMillis != null) {
+                                // Convert Milliseconds -> Instant -> LocalDate
+                                val localDate = Instant.ofEpochMilli(selectedMillis)
+                                    .atZone(ZoneId.systemDefault())
+                                    .toLocalDate()
+
+                                // Format text for button display
+                                val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+                                inputViewModel.selectDate(localDate.format(formatter))
+
+                                // Pass the selected LocalDate back to your parent view/ViewModel
+                                onDateSelected(localDate)
+                            }
+                            inputViewModel.toggleShowPicker(false)
+                        }
+                    ) {
+                        Text("OK")
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { inputViewModel.toggleShowPicker(false) }) {
+                        Text("Cancel")
+                    }
+                }
+            ) {
+                // Inside the dialog layout, place the actual picker graphic wrapper
+                DatePicker(state = inputViewModel.datePickerState)
             }
         }
     }

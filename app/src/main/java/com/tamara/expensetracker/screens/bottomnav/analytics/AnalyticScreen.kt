@@ -82,13 +82,29 @@ fun AnalyticsScreen(
             )
         )
         FilterRow(
-            modifier = Modifier.padding(top = 16.dp)
+            modifier = Modifier.padding(top = 16.dp),
+            isBar = homeScreenViewModel.isBarGraph(),
+            isMonthly = homeScreenViewModel.isMonthly(),
+            onBar = {
+                homeScreenViewModel.toggleBarGraph(true)
+            },
+            onArea = {
+                homeScreenViewModel.toggleBarGraph(false)
+            },
+            onYearly = {
+                homeScreenViewModel.toggleIsMonthly(false)
+            },
+            onMonthly = {
+                homeScreenViewModel.toggleIsMonthly(true)
+            }
         )
         Spacer(modifier = Modifier.height(12.dp))
         Column(
             modifier = Modifier.fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
+            val transacts: List<Transaction>
+                    = homeScreenViewModel.transactionList.collectAsState().value
             Spacer(modifier = Modifier.height(12.dp))
             Row {
                 DetailsCard(
@@ -116,10 +132,18 @@ fun AnalyticsScreen(
                 modifier = Modifier.padding(
                     top = 20.dp
                 ),
-                categories = homeScreenViewModel.getCategoryValues(
-                    transactions = transactions,
-                    categories = categories,
-                )
+                transactions = transacts.filter {
+                    it.type.lowercase() != "income"
+                },
+                onCalculate = {
+                    if(homeScreenViewModel.isMonthly()) {
+                        homeScreenViewModel.getWeekCount(it)
+                    } else {
+                        homeScreenViewModel.getMonthCount(it)
+                    }
+                },
+                isMonthly = homeScreenViewModel.isMonthly(),
+                isBarGraph = homeScreenViewModel.isBarGraph()
             )
             CategoryBreakdown(
                 modifier = Modifier.padding(

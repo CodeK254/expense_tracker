@@ -1,0 +1,169 @@
+id,category_id,transaction_title,transaction_type,transaction_amount,transaction_description,created_at
+171dbc25-b962-4ab5-98a2-08f924752799,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,59055,Salary for the month of June 2026,25/06/2026
+7ea7fc1a-8625-463b-953e-2c788062d0fc,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food Supplies,Expense,5000,Food supplies restock for June,26/06/2026
+1c17dd00-32e4-42c3-834b-eb3a269be868,973bc0cc-59ba-4216-806a-6613d2fca56b,Boxing,Expense,1500,ORBC Registration Fee,26/06/2026
+8e3c70d3-2dfb-4833-812e-23030c6adcf1,d913f8ed-7857-4886-8348-210a959e376a,Microwave Plug,Expense,150,Microwave power adaapter replacement plug,26/06/2026
+7ba79d23-e6e3-4258-89de-92f56e660df4,973bc0cc-59ba-4216-806a-6613d2fca56b,Hiking,Expense,1050,YoungLife hiking experience - Ngong Hills,27/06/2026
+3c60e113-30c2-4e00-b60a-b3d52e1b0782,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,300,Hiking day food & drinks,27/06/2026
+722ca620-5abf-450f-943c-4a5d5f080e9e,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Mlolongo Food And Drinks,Expense,500,Natasha ans siblings spoiled,27/06/2026
+4cf5623e-d2c2-46c8-a967-4a4cf9d4e4ba,973bc0cc-59ba-4216-806a-6613d2fca56b,Tamara,Expense,1000,Medicine - Miscellaneous amount for drugs,28/06/2026
+c3630c4b-c3d1-4359-9948-504577f95b2d,d913f8ed-7857-4886-8348-210a959e376a,Shalom,Expense,2250,Debt repayment for shower head,28/06/2026
+2a44afbc-2449-4943-97ce-7b75e3da5b2f,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Wifi monthly subscription fee,28/06/2026
+5c46ae20-281e-4c05-8ee7-8a2835d227b1,23df028a-4ca1-4b1d-a0ed-555959da26f2,Mlolongo Fare,Expense,500,Fare from Mlolongo to Rongai,28/06/2026
+cf929ae6-c547-43fe-a6d6-c6db6165ad56,778fe625-9100-4e54-b12c-8214325fefe3,Clothes & Shoes,Expense,4000,Shoes and clothes purchase,28/06/2026
+9a513095-d682-4259-81ce-8b5f9e3b3620,23df028a-4ca1-4b1d-a0ed-555959da26f2,Fare,Expense,500,Work fare and Fabian fare,29/06/2026
+ff2fcda1-dc54-464a-bdb1-60b84ced09b7,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,25000,Supper and Lunch pack,12/07/2026
+061dd5f7-2f1c-4f8b-8b3d-a222cfbf66af,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,10950,Housing rent - Bed sitter appartment,30/06/2026
+d9f1a7fa-5a4c-46fb-99c6-a96ea7a43a43,461cd8aa-c99b-4267-8b0b-41b90564cb05,Chama,Expense,2500,Boniface chama month,26/06/2026
+40001fe1-7880-42cd-9dd9-ffd869bf9cc6,461cd8aa-c99b-4267-8b0b-41b90564cb05,Tamara,Expense,4000,Monthly remediations for assistance,26/06/2026
+0b3659c4-1d7b-4129-a2c6-f7e499290a8e,461cd8aa-c99b-4267-8b0b-41b90564cb05,Loan,Expense,3800,Mom's loan repayment,26/06/2026
+af2d5b2a-b945-48d3-8fe4-85b42628b345,461cd8aa-c99b-4267-8b0b-41b90564cb05,Month Loans,Expense,13450,Monthly loan repayments,26/06/2026
+f2f355a3-73a0-415f-afa2-1a355bea50f8,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,20000,Lunch and supper,20/07/2026
+2da4b438-8e6e-480b-bb95-3b81f835d16b,23df028a-4ca1-4b1d-a0ed-555959da26f2,Fare,Expense,100,Bus fare to work,02/07/2026
+157306f9-ed7f-4f1e-b74c-d5104311a15d,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Lunch,Expense,5400,Choma and Alpha debt,03/07/2026
+e551fc1c-aab6-4c58-a0f4-b87f77495786,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,3350,Thursday food and breakfast,02/07/2026
+4f781e8b-98c1-456b-9e65-9b16ed030c92,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,550,Friday supper and beverage,03/07/2026
+b4d1bea2-fc93-4a08-9cfa-bb75d60a87f1,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Cologne,Expense,800,Cologne purchase ,30/06/2026
+a6cb0862-8e99-47df-b063-70033cbd9166,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Spotify monthly subscription. ,04/07/2026
+4c8ba37e-2f90-44b3-b347-2355bcbaebba,d913f8ed-7857-4886-8348-210a959e376a,Tokens,Expense,150,Electricity tokens,03/07/2026
+18b81ba6-7d6f-429d-a520-34400a325e3d,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,2500,Day out with Shalom,04/07/2026
+642a47ef-66a4-4926-8897-31a5cc78904f,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Supper,Expense,3500,Supper for Saturday night,04/07/2026
+2438e6e6-5db2-4479-90b2-0da5588b47c2,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,120,Food,06/07/2026
+76b3f921-724d-4d7a-8d1e-92c9f87456d1,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,60000,Salary for January,25/01/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e5f6,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,January Rent,30/01/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a4b,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Groceries,Expense,4500,Monthly grocery shopping,02/01/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d,23df028a-4ca1-4b1d-a0ed-555959da26f2,Daily Commute,Expense,2500,Transport for first week Jan,05/01/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d2e,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription Jan,04/01/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8c9d,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet Jan,28/01/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f8a,461cd8aa-c99b-4267-8b0b-41b90564cb05,Loan Repayment,Expense,5000,Jan loan installment,26/01/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Dinner Out,Expense,1500,Weekend dinner,10/01/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a5b,973bc0cc-59ba-4216-806a-6613d2fca56b,Gym Membership,Expense,3000,Monthly gym fee,01/01/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c5d,778fe625-9100-4e54-b12c-8214325fefe3,New Jacket,Expense,3500,Winter shopping,15/01/2026
+f5e6d7c8-b9a0-4f1e-8f2a-3b4c5d6e7f8a,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,60000,Salary for February,25/02/2026
+d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,February Rent,28/02/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e5f7,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food Supplies,Expense,5200,Feb groceries,02/02/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a4c,23df028a-4ca1-4b1d-a0ed-555959da26f3,Fare,Expense,2800,Feb transport total,28/02/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d2f,22fe9d77-0787-4ff5-b83c-8ee5f99731e0,Spotify,Expense,1200,Subscription Feb,04/02/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8c9e,d913f8ed-7857-4886-8348-210a959e376b,WiFi,Expense,2000,Monthly Internet Feb,28/02/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f8b,461cd8aa-c99b-4267-8b0b-41b90564cb06,Chama,Expense,2500,Monthly contribution,26/02/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e80,ab2b27c3-ef32-4326-a188-1bc7be16f14e,Lunch,Expense,600,Lunch with colleague,12/02/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a5c,973bc0cc-59ba-4216-806a-6613d2fca56c,Dentist,Expense,4500,Checkup,15/02/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5e,71b95d1d-cfc6-4757-a086-43f0af796a92,Consultancy FEE,Income,60000,Salary for March,25/03/2026
+f5e6d7c8-b9a0-4f1e-8f2a-3b4c5d6e7f8b,d913f8ed-7857-4886-8348-210a959e376c,Rent,Expense,11000,March Rent,31/03/2026
+d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8c,ab2b27c3-ef32-4326-a188-1bc7be16f14f,Groceries,Expense,4800,Stock up for March,03/03/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a4d,23df028a-4ca1-4b1d-a0ed-555959da26f4,Transport,Expense,3200,Work commute March,31/03/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d30,22fe9d77-0787-4ff5-b83c-8ee5f99731e1,Spotify,Expense,1200,Subscription March,04/03/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8c9f,d913f8ed-7857-4886-8348-210a959e376d,WiFi,Expense,2000,Monthly Internet March,28/03/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f8c,461cd8aa-c99b-4267-8b0b-41b90564cb07,Loan Repayment,Expense,5000,Loan installment,26/03/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e81,ab2b27c3-ef32-4326-a188-1bc7be16f150,Pizza Night,Expense,2200,Celebration,20/03/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a5d,973bc0cc-59ba-4216-806a-6613d2fca56d,Boxing,Expense,1500,Monthly training,26/03/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c5f,778fe625-9100-4e54-b12c-8214325fefe4,Shoes,Expense,5500,Formal shoes,10/03/2026
+76b3f921-724d-4d7a-8d1e-92c9f87456d2,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,62000,Salary for April (Bonus),25/04/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e5f8,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,April Rent,30/04/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a4e,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Groceries,Expense,5000,Monthly shop,02/04/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c60,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,3000,Daily fare April,30/04/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d31,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription Apr,04/04/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8ca0,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet Apr,28/04/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f8d,461cd8aa-c99b-4267-8b0b-41b90564cb05,Chama,Expense,2500,Monthly saving,26/04/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e82,973bc0cc-59ba-4216-806a-6613d2fca56b,Hiking,Expense,1200,April outing,18/04/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a5e,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Brunch,Expense,1800,Sunday brunch,12/04/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c61,d913f8ed-7857-4886-8348-210a959e376a,Tokens,Expense,500,Electricity April,05/04/2026
+f5e6d7c8-b9a0-4f1e-8f2a-3b4c5d6e7f8c,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,60000,Salary for May,25/05/2026
+d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8d,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,May Rent,31/05/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e5f9,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food Supplies,Expense,4700,Monthly groceries,03/05/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a4f,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,3100,Commute May,31/05/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d32,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription May,04/05/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8ca1,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet May,28/05/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f8e,461cd8aa-c99b-4267-8b0b-41b90564cb05,Loan Repayment,Expense,5000,May installment,26/05/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e83,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Takeout,Expense,900,Late night supper,15/05/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a5f,973bc0cc-59ba-4216-806a-6613d2fca56b,Medicine,Expense,1200,Flu meds,08/05/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c62,778fe625-9100-4e54-b12c-8214325fefe3,Kitchenware,Expense,2500,New pans,20/05/2026
+171dbc25-b962-4ab5-98a2-08f924752799,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,59055,Salary for the month of June 2026,25/06/2026
+7ea7fc1a-8625-463b-953e-2c788062d0fc,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food Supplies,Expense,5000,Food supplies restock for June,26/06/2026
+1c17dd00-32e4-42c3-834b-eb3a269be868,973bc0cc-59ba-4216-806a-6613d2fca56b,Boxing,Expense,1500,ORBC Registration Fee,26/06/2026
+8e3c70d3-2dfb-4833-812e-23030c6adcf1,d913f8ed-7857-4886-8348-210a959e376a,Microwave Plug,Expense,150,Microwave power adaapter replacement plug,26/06/2026
+7ba79d23-e6e3-4258-89de-92f56e660df4,973bc0cc-59ba-4216-806a-6613d2fca56b,Hiking,Expense,1050,YoungLife hiking experience - Ngong Hills,27/06/2026
+3c60e113-30c2-4e00-b60a-b3d52e1b0782,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,300,Hiking day food & drinks,27/06/2026
+722ca620-5abf-450f-943c-4a5d5f080e9e,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Mlolongo Food And Drinks,Expense,500,Natasha ans siblings spoiled,27/06/2026
+4cf5623e-d2c2-46c8-a967-4a4cf9d4e4ba,973bc0cc-59ba-4216-806a-6613d2fca56b,Tamara,Expense,1000,Medicine - Miscellaneous amount for drugs,28/06/2026
+c3630c4b-c3d1-4359-9948-504577f95b2d,d913f8ed-7857-4886-8348-210a959e376a,Shalom,Expense,2250,Debt repayment for shower head,28/06/2026
+2a44afbc-2449-4943-97ce-7b75e3da5b2f,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Wifi monthly subscription fee,28/06/2026
+5c46ae20-281e-4c05-8ee7-8a2835d227b1,23df028a-4ca1-4b1d-a0ed-555959da26f2,Mlolongo Fare,Expense,500,Fare from Mlolongo to Rongai,28/06/2026
+cf929ae6-c547-43fe-a6d6-c6db6165ad56,778fe625-9100-4e54-b12c-8214325fefe3,Clothes & Shoes,Expense,4000,Shoes and clothes purchase,28/06/2026
+9a513095-d682-4259-81ce-8b5f9e3b3620,23df028a-4ca1-4b1d-a0ed-555959da26f2,Fare,Expense,500,Work fare and Fabian fare,29/06/2026
+ff2fcda1-dc54-464a-bdb1-60b84ced09b7,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,25000,Supper and Lunch pack,12/07/2026
+061dd5f7-2f1c-4f8b-8b3d-a222cfbf66af,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,10950,Housing rent - Bed sitter appartment,30/06/2026
+d9f1a7fa-5a4c-46fb-99c6-a96ea7a43a43,461cd8aa-c99b-4267-8b0b-41b90564cb05,Chama,Expense,2500,Boniface chama month,26/06/2026
+40001fe1-7880-42cd-9dd9-ffd869bf9cc6,461cd8aa-c99b-4267-8b0b-41b90564cb05,Tamara,Expense,4000,Monthly remediations for assistance,26/06/2026
+0b3659c4-1d7b-4129-a2c6-f7e499290a8e,461cd8aa-c99b-4267-8b0b-41b90564cb05,Loan,Expense,3800,Mom's loan repayment,26/06/2026
+af2d5b2a-b945-48d3-8fe4-85b42628b345,461cd8aa-c99b-4267-8b0b-41b90564cb05,Month Loans,Expense,13450,Monthly loan repayments,26/06/2026
+f2f355a3-73a0-415f-afa2-1a355bea50f8,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,20000,Lunch and supper,20/07/2026
+2da4b438-8e6e-480b-bb95-3b81f835d16b,23df028a-4ca1-4b1d-a0ed-555959da26f2,Fare,Expense,100,Bus fare to work,02/07/2026
+157306f9-ed7f-4f1e-b74c-d5104311a15d,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Lunch,Expense,5400,Choma and Alpha debt,03/07/2026
+e551fc1c-aab6-4c58-a0f4-b87f77495786,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,3350,Thursday food and breakfast,02/07/2026
+4f781e8b-98c1-456b-9e65-9b16ed030c92,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,550,Friday supper and beverage,03/07/2026
+b4d1bea2-fc93-4a08-9cfa-bb75d60a87f1,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Cologne,Expense,800,Cologne purchase ,30/06/2026
+a6cb0862-8e99-47df-b063-70033cbd9166,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Spotify monthly subscription. ,04/07/2026
+4c8ba37e-2f90-44b3-b347-2355bcbaebba,d913f8ed-7857-4886-8348-210a959e376a,Tokens,Expense,150,Electricity tokens,03/07/2026
+18b81ba6-7d6f-429d-a520-34400a325e3d,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,2500,Day out with Shalom,04/07/2026
+642a47ef-66a4-4926-8897-31a5cc78904f,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Supper,Expense,3500,Supper for Saturday night,04/07/2026
+2438e6e6-5db2-4479-90b2-0da5588b47c2,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,120,Food,06/07/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c63,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,60000,Salary for July,25/07/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e5f0,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,July Rent,31/07/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a40,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Groceries,Expense,5500,July food restock,05/07/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c64,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,3300,July commute,31/07/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d33,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription July,04/07/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8ca2,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet July,28/07/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f8f,461cd8aa-c99b-4267-8b0b-41b90564cb05,Loan Repayment,Expense,5000,July installment,26/07/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e84,778fe625-9100-4e54-b12c-8214325fefe3,Summer Shirts,Expense,3000,July shopping,15/07/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a60,973bc0cc-59ba-4216-806a-6613d2fca56b,Cinema,Expense,1500,Movie night,12/07/2026
+f5e6d7c8-b9a0-4f1e-8f2a-3b4c5d6e7f8d,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,60000,Salary for August,25/08/2026
+d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8e,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,August Rent,31/08/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e601,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Groceries,Expense,5200,August food,03/08/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a50,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,2900,Commute August,31/08/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d34,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription August,04/08/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8ca3,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet August,28/08/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f90,461cd8aa-c99b-4267-8b0b-41b90564cb05,Chama,Expense,2500,August saving,26/08/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e85,ab2b27c3-ef32-4326-a188-1bc7be16f14d,BBQ Party,Expense,4000,Hosting friends,22/08/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a61,973bc0cc-59ba-4216-806a-6613d2fca56b,Vitamins,Expense,1800,Health supplements,10/08/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c65,d913f8ed-7857-4886-8348-210a959e376a,Repair,Expense,1500,Leaking tap fix,14/08/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c66,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,60000,Salary for September,25/09/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e602,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,September Rent,30/09/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a51,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food Supplies,Expense,4900,September groceries,02/09/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c67,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,3200,Commute September,30/09/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d35,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription Sept,04/09/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8ca4,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet Sept,28/09/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f91,461cd8aa-c99b-4267-8b0b-41b90564cb05,Loan Repayment,Expense,5000,Sept installment,26/09/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e86,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Coffee Shop,Expense,450,Work from cafe,15/09/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a62,973bc0cc-59ba-4216-806a-6613d2fca56b,Hiking,Expense,1100,Mount Kenya Prep,20/09/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c68,778fe625-9100-4e54-b12c-8214325fefe3,Backpack,Expense,4200,Hiking gear,21/09/2026
+f5e6d7c8-b9a0-4f1e-8f2a-3b4c5d6e7f8e,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,60000,Salary for October,25/10/2026
+d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8f,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,October Rent,31/10/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e603,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Groceries,Expense,5300,October stock,02/10/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a52,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,3000,Commute October,31/10/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d36,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription Oct,04/10/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8ca5,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet Oct,28/10/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f92,461cd8aa-c99b-4267-8b0b-41b90564cb05,Chama,Expense,2500,Oct contribution,26/10/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e87,973bc0cc-59ba-4216-806a-6613d2fca56b,Therapy,Expense,3000,Session fee,12/10/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a63,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Ice Cream,Expense,350,Treat,15/10/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c69,d913f8ed-7857-4886-8348-210a959e376a,Tokens,Expense,1000,Electricity Oct,05/10/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c70,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,60000,Salary for November,25/11/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e604,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,November Rent,30/11/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a53,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Groceries,Expense,5100,Nov food,04/11/2026
+a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c71,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,2800,Commute November,30/11/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d37,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription Nov,04/11/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8ca6,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet Nov,28/11/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f93,461cd8aa-c99b-4267-8b0b-41b90564cb05,Loan Repayment,Expense,5000,Nov installment,26/11/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e88,778fe625-9100-4e54-b12c-8214325fefe3,Winter Coat,Expense,7500,Pre-holiday shopping,15/11/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a64,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Thanksgiving Dinner,Expense,6000,Dinner with family,26/11/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c72,973bc0cc-59ba-4216-806a-6613d2fca56b,Eye Test,Expense,2500,New glasses prescription,10/11/2026
+f5e6d7c8-b9a0-4f1e-8f2a-3b4c5d6e7f8f,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,65000,Salary for December (Annual Bonus),24/12/2026
+d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f90,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,11000,December Rent,31/12/2026
+c92d3f4a-8e5b-4c6d-9f7e-a1b2c3d4e605,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Christmas Groceries,Expense,12000,Holiday food stock,20/12/2026
+e2f1a0b9-c8d7-4e6f-a5b4-9c8d7e6f5a54,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,4500,Holiday travel,31/12/2026
+f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4c3d38,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,1200,Subscription Dec,04/12/2026
+b7a8c9d0-e1f2-4a3b-8c9d-4e5f6a7b8ca7,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Monthly Internet Dec,28/12/2026
+d5e6f7a8-b9c0-4d1e-8f2a-3b4c5d6e7f94,461cd8aa-c99b-4267-8b0b-41b90564cb05,Chama,Expense,2500,Dec contribution,26/12/2026
+c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e89,778fe625-9100-4e54-b12c-8214325fefe3,Gifts,Expense,15000,Christmas presents for family,18/12/2026
+e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a65,ab2b27c3-ef32-4326-a188-1bc7be16f14d,NYE Party,Expense,8000,Party supplies and drinks,31/12/2026
+1a2b3c4d-5e6f-4a5b-8c9d-0e1f2a3b4c73,d913f8ed-7857-4886-8348-210a959e376a,Tokens,Expense,1500,Electricity December,05/12/2026

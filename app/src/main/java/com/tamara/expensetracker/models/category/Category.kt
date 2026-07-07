@@ -30,4 +30,17 @@ class Category (
 ) {
     val composeColor: Color
         get() = Color(color)
+
+    companion object {
+        fun default(): Category {
+            return Category(
+                id = UUID.randomUUID(),
+                value = 0f,
+                label = "UnKnown",
+                icon = "unknown",
+                color = Color.White.value.toInt(),
+                createdAt = LocalDateTime.now()
+            )
+        }
+    }
 }

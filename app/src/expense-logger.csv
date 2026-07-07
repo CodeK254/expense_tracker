@@ -1,0 +1,31 @@
+id,category_id,transaction_title,transaction_type,transaction_amount,transaction_description,created_at
+171dbc25-b962-4ab5-98a2-08f924752799,71b95d1d-cfc6-4757-a086-43f0af796a91,Consultancy FEE,Income,59055,Salary for the month of June 2026,25/06/2026
+7ea7fc1a-8625-463b-953e-2c788062d0fc,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food Supplies,Expense,5000,Food supplies restock for June,26/06/2026
+1c17dd00-32e4-42c3-834b-eb3a269be868,973bc0cc-59ba-4216-806a-6613d2fca56b,Boxing,Expense,1500,ORBC Registration Fee,26/06/2026
+8e3c70d3-2dfb-4833-812e-23030c6adcf1,d913f8ed-7857-4886-8348-210a959e376a,Microwave Plug,Expense,150,Microwave power adaapter replacement plug,26/06/2026
+7ba79d23-e6e3-4258-89de-92f56e660df4,973bc0cc-59ba-4216-806a-6613d2fca56b,Hiking,Expense,1050,YoungLife hiking experience - Ngong Hills,27/06/2026
+3c60e113-30c2-4e00-b60a-b3d52e1b0782,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,300,Hiking day food & drinks,27/06/2026
+722ca620-5abf-450f-943c-4a5d5f080e9e,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Mlolongo Food And Drinks,Expense,500,Natasha ans siblings spoiled,27/06/2026
+4cf5623e-d2c2-46c8-a967-4a4cf9d4e4ba,973bc0cc-59ba-4216-806a-6613d2fca56b,Tamara,Expense,1000,Medicine - Miscellaneous amount for drugs,28/06/2026
+c3630c4b-c3d1-4359-9948-504577f95b2d,d913f8ed-7857-4886-8348-210a959e376a,Shalom,Expense,2250,Debt repayment for shower head,28/06/2026
+2a44afbc-2449-4943-97ce-7b75e3da5b2f,d913f8ed-7857-4886-8348-210a959e376a,WiFi,Expense,2000,Wifi monthly subscription fee,28/06/2026
+5c46ae20-281e-4c05-8ee7-8a2835d227b1,23df028a-4ca1-4b1d-a0ed-555959da26f2,Mlolongo Fare,Expense,500,Fare from Mlolongo to Rongai,28/06/2026
+cf929ae6-c547-43fe-a6d6-c6db6165ad56,778fe625-9100-4e54-b12c-8214325fefe3,Clothes & Shoes,Expense,4000,Shoes and clothes purchase,28/06/2026
+9a513095-d682-4259-81ce-8b5f9e3b3620,23df028a-4ca1-4b1d-a0ed-555959da26f2,Fare,Expense,500,Work fare and Fabian fare,29/06/2026
+ff2fcda1-dc54-464a-bdb1-60b84ced09b7,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,500,Supper and Lunch pack,28/06/2026
+061dd5f7-2f1c-4f8b-8b3d-a222cfbf66af,d913f8ed-7857-4886-8348-210a959e376a,Rent,Expense,10950,Housing rent - Bed sitter appartment,30/06/2026
+d9f1a7fa-5a4c-46fb-99c6-a96ea7a43a43,461cd8aa-c99b-4267-8b0b-41b90564cb05,Chamq,Expense,2500,Boniface chama month,26/06/2026
+40001fe1-7880-42cd-9dd9-ffd869bf9cc6,461cd8aa-c99b-4267-8b0b-41b90564cb05,Tamara,Expense,4000,Monthly remediations for assistance,26/06/2026
+0b3659c4-1d7b-4129-a2c6-f7e499290a8e,461cd8aa-c99b-4267-8b0b-41b90564cb05,Loan,Expense,3800,Mom's loan repayment,26/06/2026
+af2d5b2a-b945-48d3-8fe4-85b42628b345,461cd8aa-c99b-4267-8b0b-41b90564cb05,Month Loans,Expense,13450,Monthly loan repayments,26/06/2026
+f2f355a3-73a0-415f-afa2-1a355bea50f8,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,200,Lunch and supper,01/06/2026
+2da4b438-8e6e-480b-bb95-3b81f835d16b,23df028a-4ca1-4b1d-a0ed-555959da26f2,Fare,Expense,100,Bus fare to work,02/07/2026
+157306f9-ed7f-4f1e-b74c-d5104311a15d,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Lunch,Expense,540,Choma and Alpha debt,03/07/2026
+e551fc1c-aab6-4c58-a0f4-b87f77495786,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,335,Thursday food and breakfast,02/07/2026
+4f781e8b-98c1-456b-9e65-9b16ed030c92,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food & Drinks,Expense,550,Friday supper and beverage,03/07/2026
+b4d1bea2-fc93-4a08-9cfa-bb75d60a87f1,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Cologne,Expense,800,Cologne purchase ,30/06/2026
+a6cb0862-8e99-47df-b063-70033cbd9166,22fe9d77-0787-4ff5-b83c-8ee5f99731df,Spotify,Expense,120,Spotify monthly subscription. ,04/07/2026
+4c8ba37e-2f90-44b3-b347-2355bcbaebba,d913f8ed-7857-4886-8348-210a959e376a,Tokens,Expense,150,Electricity tokens,03/07/2026
+18b81ba6-7d6f-429d-a520-34400a325e3d,23df028a-4ca1-4b1d-a0ed-555959da26f2,Transport,Expense,250,Day out with Shalom,04/07/2026
+642a47ef-66a4-4926-8897-31a5cc78904f,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Supper,Expense,350,Supper for Saturday night,04/07/2026
+2438e6e6-5db2-4479-90b2-0da5588b47c2,ab2b27c3-ef32-4326-a188-1bc7be16f14d,Food,Expense,120,Food,06/07/2026

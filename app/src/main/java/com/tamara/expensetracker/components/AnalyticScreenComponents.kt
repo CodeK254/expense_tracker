@@ -1,6 +1,8 @@
 package com.tamara.expensetracker.components
 
+import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +23,6 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,16 +34,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.developerstring.jetco.ui.charts.barchart.ColumnBarChart
+import com.developerstring.jetco.ui.charts.barchart.config.BarChartConfig
+import com.developerstring.jetco.ui.charts.barchart.config.BarChartDefaults
 import com.developerstring.jetco.ui.charts.linegraph.LineGraph
 import com.developerstring.jetco.ui.charts.linegraph.config.*
 import com.tamara.expensetracker.models.category.Category
-import kotlinx.coroutines.delay
-import kotlin.random.Random
+import com.tamara.expensetracker.models.transaction.Transaction
 
 
 @Composable
 fun FilterRow(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isBar: Boolean = false,
+    isMonthly: Boolean = true,
+    onMonthly: () -> Unit = {},
+    onYearly: () -> Unit = {},
+    onArea: () -> Unit = {},
+    onBar: () -> Unit = {},
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -67,12 +76,14 @@ fun FilterRow(
             FilterCard(
                 label = "Monthly",
                 width = 75,
-                isSelected = true,
+                isSelected = isMonthly,
+                onToggle = onMonthly
             )
             FilterCard(
                 label = "Yearly",
                 width = 75,
-                isSelected = false,
+                isSelected = !isMonthly,
+                onToggle = onYearly
             )
         }
         Row(
@@ -93,12 +104,14 @@ fun FilterRow(
             FilterCard(
                 label = "Area",
                 width = 50,
-                isSelected = true,
+                isSelected = !isBar,
+                onToggle = onArea
             )
             FilterCard(
                 label = "Bar",
                 width = 50,
-                isSelected = false,
+                isSelected = isBar,
+                onToggle = onBar
             )
         }
     }
@@ -110,11 +123,15 @@ fun FilterCard(
     label: String,
     width: Int,
     isSelected: Boolean,
+    onToggle: () -> Unit,
 ) {
     Card(
         modifier = modifier
             .width(width.dp)
-            .height(30.dp),
+            .height(30.dp)
+            .clickable {
+                onToggle.invoke()
+            },
         colors = CardDefaults.cardColors().copy(
             containerColor = if (isSelected) Color(red = 255, green = 100, blue = 50) else Color.Transparent
         ),
@@ -180,88 +197,173 @@ fun DetailsCard(
 @Composable
 fun LiveUpdateChart(
     modifier: Modifier = Modifier,
-    categories: List<Category>
+    isBarGraph: Boolean = false,
+    isMonthly: Boolean = true,
+    transactions: List<Transaction>,
+    onCalculate: (transaction: Transaction) -> Int,
 ) {
-    var chartData: Map<String, Float> =
-        categories.filter {
-            it.value != 0.0f
-        }.associate { it.label to it.value }
-    val timeLabels: List<String> =
-        categories.filter {
-            it.value != 0f
-        }.map { it.label }
-
-    LaunchedEffect(Unit) {
-        var currentIndex = 5
-
-        while (currentIndex < timeLabels.size) {
-            delay(2000)
-            val newValue = Random.nextFloat() * (30f - 20f) + 20f
-            val entries = chartData.toMutableMap()
-            entries[timeLabels[currentIndex]] = newValue
-
-            if (entries.size > 5) {
-                val sorted = entries.entries.sortedBy { timeLabels.indexOf(it.key) }
-                chartData = sorted.takeLast(5).associate { it.key to it.value }
-            } else {
-                chartData = entries
+    var chartData: MutableMap<String, Float>
+    if (!isMonthly) {
+        chartData = mutableMapOf(
+            "January" to 0f,
+            "February" to 0f,
+            "March" to 0f,
+            "April" to 0f,
+            "May" to 0f,
+            "June" to 0f,
+            "July" to 0f,
+            "August" to 0f,
+            "September" to 0f,
+            "October" to 0f,
+            "November" to 0f,
+            "December" to 0f
+        )
+    } else {
+        chartData = mutableMapOf(
+            "Week1" to 0f,
+            "Week2" to 0f,
+            "Week3" to 0f,
+            "Week4" to 0f
+        )
+    }
+    for (transaction in transactions){
+        if(isMonthly) {
+            Log.d("EXPENSE-APP", "LiveUpdateChart: THIS IS MONTHLY")
+            when (onCalculate.invoke(transaction)) {
+                1 -> chartData["Week1"] = chartData["Week1"]?.plus(transaction.amount) as Float
+                2 -> chartData["Week2"] = chartData["Week2"]?.plus(transaction.amount) as Float
+                3 -> chartData["Week3"] = chartData["Week3"]?.plus(transaction.amount) as Float
+                4 -> chartData["Week4"] = chartData["Week4"]?.plus(transaction.amount) as Float
             }
-
-            currentIndex++
-            if (currentIndex >= timeLabels.size) currentIndex = 5
+        } else {
+            Log.d("EXPENSE-APP", "LiveUpdateChart: THIS IS YEARLY")
+            when (onCalculate.invoke(transaction)) {
+                1 -> chartData["January"] = chartData["January"]?.plus(transaction.amount) as Float
+                2 -> chartData["February"] = chartData["February"]?.plus(transaction.amount) as Float
+                3 -> chartData["March"] = chartData["March"]?.plus(transaction.amount) as Float
+                4 -> chartData["April"] = chartData["April"]?.plus(transaction.amount) as Float
+                5 -> chartData["May"] = chartData["May"]?.plus(transaction.amount) as Float
+                6 -> chartData["June"] = chartData["June"]?.plus(transaction.amount) as Float
+                7 -> chartData["July"] = chartData["July"]?.plus(transaction.amount) as Float
+                8 -> chartData["August"] = chartData["August"]?.plus(transaction.amount) as Float
+                9 -> chartData["September"] = chartData["September"]?.plus(transaction.amount) as Float
+                10 -> chartData["October"] = chartData["October"]?.plus(transaction.amount) as Float
+                11 -> chartData["November"] = chartData["November"]?.plus(transaction.amount) as Float
+                12 -> chartData["December"] = chartData["December"]?.plus(transaction.amount) as Float
+            }
+            chartData.forEach {
+                string, f ->
+                Log.d("EXPENSE-APP", "Transaction => ${transaction.createdAt} - ChartData $string: $f")
+            }
         }
+    }
+
+    val keys = chartData.keys.toList()
+
+    if(isMonthly) {
+        for (key in keys) {
+            if (chartData[key] == 0f) {
+                Log.d("EXPENSE-APP", "REMOVING: $key")
+                chartData.remove(key)
+            } else {
+                try {
+                    Log.d(
+                        "EXPENSE-APP",
+                        "SKIPPING: $key - CHECKING ${chartData[keys[keys.indexOf(key) - 1]]}"
+                    )
+                    if (keys.indexOf(key) > 0 && chartData[keys[keys.indexOf(key) - 1]] == null) {
+                        Log.d("EXPENSE-APP", "REASSIGNING: $key")
+                        chartData[keys[keys.indexOf(key) - 1]] = 0f
+                    }
+                } catch (e: Exception) {
+                    Log.d("EXPENSE-APP", "LiveUpdateChart: $e")
+                }
+            }
+        }
+
+        chartData = chartData.toSortedMap()
     }
 
     val liveOrange = Color(0xFFFF6B35)
 
-    LineGraph(
-        chartData = chartData,
-        chartHeight = 220.dp,
-        lineConfig = LineGraphLineConfig(
-            lineColor = liveOrange,
-            lineWidth = 3.dp,
-            strokeCap = StrokeCap.Round,
-            smoothCurve = true,
-            curvature = 0.3f
-        ),
-        areaFillConfig = LineGraphAreaFillConfig(
-            enabled = true,
-            brush = Brush.verticalGradient(
-                listOf(liveOrange.copy(alpha = 0.3f), Color.Transparent)
-            )
-        ),
-        pointConfig = LineGraphPointConfig(
-            enabled = true, radius = 6.dp,
-            color = liveOrange, borderColor = Color.White, borderWidth = 2.dp
-        ),
-        liveUpdateConfig = LineGraphLiveUpdateConfig(
-            enabled = true,
-            blinkEnabled = true,
-            blinkDurationMillis = 1000,
-            blinkMinRadius = 8f,
-            blinkMaxRadius = 20f,
-            blinkColor = liveOrange,
-            pathTransitionDurationMillis = 800
-        ),
-        yAxisConfig = LineGraphDefaults.yAxisConfig(
-            axisScaleCount = 4,
-            isAxisLineEnabled = true,
-            isAxisScaleEnabled = true,
-            textStyle = TextStyle(fontSize = 11.sp, color = Color.White)
-        ),
-        xAxisConfig = LineGraphDefaults.xAxisConfig(
-            isAxisLineEnabled = true,
-            isAxisScaleEnabled = true,
-            textStyle = TextStyle(fontSize = 11.sp, color = Color.White)
-        ),
-        gridLineStyle = LineGraphGridLineStyle(
-            color = Color(0xFFF3F4F6), strokeWidth = 1.dp
-        ),
-        animationConfig = LineGraphAnimationConfig(
-            enabled = true, durationMillis = 800
-        ),
-        horizontalDrawPadding = 12.dp
-    )
+    if(isBarGraph){
+        ColumnBarChart(
+            modifier = modifier,
+            chartData = chartData,
+            barChartConfig = BarChartDefaults.columnBarChartConfig(
+                color = liveOrange,
+                width = 40.dp,
+                shape = CircleShape.copy(
+                    topEnd = CornerSize(12.dp),
+                    topStart = CornerSize(12.dp),
+                    bottomEnd = CornerSize(0.dp),
+                    bottomStart = CornerSize(0.dp),
+                ),
+                height = 220.dp,
+            ),
+            yAxisConfig = BarChartDefaults.yAxisConfig(
+                axisScaleCount = 4,
+                isAxisLineEnabled = true,
+                isAxisScaleEnabled = true,
+                textStyle = TextStyle(fontSize = 11.sp, color = Color.White)
+            ),
+            xAxisConfig = BarChartDefaults.xAxisConfig(
+                isAxisLineEnabled = true,
+                isAxisScaleEnabled = true,
+                textStyle = TextStyle(fontSize = 11.sp, color = Color.White)
+            ),
+        )
+    } else {
+        LineGraph(
+            modifier = modifier,
+            chartData = chartData,
+            chartHeight = 220.dp,
+            lineConfig = LineGraphLineConfig(
+                lineColor = liveOrange,
+                lineWidth = 3.dp,
+                strokeCap = StrokeCap.Round,
+                smoothCurve = true,
+                curvature = 0.3f
+            ),
+            areaFillConfig = LineGraphAreaFillConfig(
+                enabled = true,
+                brush = Brush.verticalGradient(
+                    listOf(liveOrange.copy(alpha = 0.3f), Color.Transparent)
+                )
+            ),
+            pointConfig = LineGraphPointConfig(
+                enabled = true, radius = 6.dp,
+                color = liveOrange, borderColor = Color.White, borderWidth = 2.dp
+            ),
+            liveUpdateConfig = LineGraphLiveUpdateConfig(
+                enabled = true,
+                blinkEnabled = true,
+                blinkDurationMillis = 1000,
+                blinkMinRadius = 8f,
+                blinkMaxRadius = 20f,
+                blinkColor = liveOrange,
+                pathTransitionDurationMillis = 800
+            ),
+            yAxisConfig = LineGraphDefaults.yAxisConfig(
+                axisScaleCount = 4,
+                isAxisLineEnabled = true,
+                isAxisScaleEnabled = true,
+                textStyle = TextStyle(fontSize = 11.sp, color = Color.White)
+            ),
+            xAxisConfig = LineGraphDefaults.xAxisConfig(
+                isAxisLineEnabled = true,
+                isAxisScaleEnabled = true,
+                textStyle = TextStyle(fontSize = 11.sp, color = Color.White)
+            ),
+            gridLineStyle = LineGraphGridLineStyle(
+                color = Color(0xFFF3F4F6), strokeWidth = 1.dp
+            ),
+            animationConfig = LineGraphAnimationConfig(
+                enabled = true, durationMillis = 800
+            ),
+            horizontalDrawPadding = 12.dp
+        )
+    }
 }
 
 @Composable
@@ -320,7 +422,9 @@ fun CategoryRow(
             enabled = false,
             onValueChange = {},
             thumb = {
-                Spacer(modifier = Modifier.size(0.dp).padding(0.dp))
+                Spacer(modifier = Modifier
+                    .size(0.dp)
+                    .padding(0.dp))
             },
             track = { sliderState ->
                 SliderDefaults.Track(

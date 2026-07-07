@@ -1,8 +1,11 @@
 package com.tamara.expensetracker.screens.bottomnav.create
 
 import android.util.Log
+import androidx.compose.material3.DatePickerState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import java.util.Locale
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,6 +16,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,6 +32,26 @@ class InputScreenViewModel @Inject constructor(
     private val categoryInputState = mutableStateOf(CategoryDataSource().fetchCategories()[0])
 
     private val _categoryList = MutableStateFlow<List<Category>>(emptyList())
+    private val _showDatePicker = mutableStateOf(false)
+    private val _selectedDateText = mutableStateOf("Select date...")
+
+    fun showDatePicker(): Boolean {
+        return _showDatePicker.value
+    }
+
+    fun selectedDateText(): String {
+        return _selectedDateText.value
+    }
+
+    fun selectDate(text: String){
+        _selectedDateText.value = text
+    }
+
+    fun toggleShowPicker(value: Boolean){
+        _showDatePicker.value = value
+    }
+    @OptIn(ExperimentalMaterial3Api::class)
+    val datePickerState = DatePickerState(locale = Locale("en_US"), initialSelectedDate = LocalDate.now())
 
     init {
         clearAllFields()

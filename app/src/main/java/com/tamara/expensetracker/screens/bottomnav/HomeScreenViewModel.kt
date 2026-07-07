@@ -1,5 +1,6 @@
 package com.tamara.expensetracker.screens.bottomnav
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -16,8 +17,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
+import java.io.BufferedReader
 import java.util.UUID
 import javax.inject.Inject
+import java.io.InputStreamReader
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 enum class Param {
     BALANCE, INCOME, EXPENSE
@@ -30,8 +36,15 @@ class HomeScreenViewModel @Inject constructor(
 ): ViewModel() {
     private val _categoryList = MutableStateFlow<List<Category>>(emptyList())
     private val _expandedTile = mutableStateOf(UUID.randomUUID())
+    private val _inputState = mutableStateOf("")
     private val _viewMore = mutableStateOf(false)
+    private val _isBarGraph = mutableStateOf(false)
+    private val _isMonthly = mutableStateOf(true)
     fun viewMore(): Boolean { return _viewMore.value }
+    fun isBarGraph(): Boolean { return _isBarGraph.value }
+    fun isMonthly(): Boolean { return _isMonthly.value }
+    fun inputValue(): String { return _inputState.value }
+    fun onInputChanges(value: String) { _inputState.value = value }
     val categoryList = _categoryList.asStateFlow()
 
     fun getExpandedTile(): UUID { return _expandedTile.value }
@@ -39,8 +52,26 @@ class HomeScreenViewModel @Inject constructor(
     private val _transactionList = MutableStateFlow<List<Transaction>>(emptyList())
     val transactionList = _transactionList.asStateFlow()
 
+    fun getFilteredTransaction(
+        transactions: List<Transaction>
+    ): List<Transaction>{
+        return transactions.filter{ transaction ->
+            transaction.title.contains(
+                other = _inputState.value, ignoreCase = true
+            )
+        }
+    }
+
     fun toggleViewMore(value: Boolean) {
         _viewMore.value = value
+    }
+
+    fun toggleBarGraph(value: Boolean) {
+        _isBarGraph.value = value
+    }
+
+    fun toggleIsMonthly(value: Boolean) {
+        _isMonthly.value = value
     }
 
     fun getAvailableBalance(param: Param, transactions: List<Transaction>): Float {
@@ -113,6 +144,34 @@ class HomeScreenViewModel @Inject constructor(
         }
     }
 
+    fun getWeekCount(transaction: Transaction): Int {
+        // 1. Get the current date dynamically
+        val today = LocalDate.now()
+        if(transaction.createdAt.month.value != today.month.value){
+            return 0
+        }
+
+        // 2. Define 25th of last month and 25th of this month
+        val lastMonth25th = if(transaction.createdAt.dayOfMonth < 25){
+            today.minusMonths(1).withDayOfMonth(25)
+        } else {
+            today.withDayOfMonth(25)
+        }
+
+        val transactionDate = today.withDayOfMonth(transaction.createdAt.dayOfMonth)
+
+        // 3. Calculate full weeks between them
+        val fullWeeks =
+            ChronoUnit.WEEKS.between(lastMonth25th, transactionDate) + 1
+
+        Log.d("EXPENSE-APP", "Transaction ${transaction.title} of date ${transaction.createdAt} of week => $transactionDate - $lastMonth25th = $fullWeeks")
+        return fullWeeks.toInt()
+    }
+
+    fun getMonthCount(transaction: Transaction): Int {
+        return transaction.createdAt.month.value
+    }
+
     fun addNewTransaction(
         transaction: Transaction,
         onComplete: () -> Unit,
@@ -132,7 +191,7 @@ class HomeScreenViewModel @Inject constructor(
         _expandedTile.value = UUID.randomUUID()
     }
 
-    private val selectedState = mutableIntStateOf(value = 1)
+    private val selectedState = mutableIntStateOf(value = 0)
 
     fun toggleSelection(value: Int) {
         selectedState.intValue = value
